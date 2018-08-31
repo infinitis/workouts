@@ -1,3 +1,6 @@
+**NOT STABLE**
+Planning on rewriting in javascript
+
 Created by Alex Joss
 Version: 0.0.0
 Publish Date: 0000-00-00
