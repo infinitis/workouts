@@ -1,0 +1,38 @@
+{
+  "name": "@infinito/workouts",
+  "version": "0.0.0",
+  "description": "Tool for quickly and easily managing and keeping track of workouts.",
+  "main": "workouts.min.js",
+  "scripts": {
+    "build": "webpack --config webpack.prod.config.js",
+    "build:dev": "webpack --config webpack.dev.config.js",
+    "test": "nyc mocha --require @babel/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinitis/workouts.git"
+  },
+  "author": "Alex Joss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/infinitis/workouts/issues"
+  },
+  "homepage": "https://github.com/infinitis/workouts#readme",
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/register": "^7.0.0",
+    "css-loader": "^2.1.1",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-merge": "^4.2.1"
+  }
+}
