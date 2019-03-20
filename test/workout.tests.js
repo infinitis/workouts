@@ -8,11 +8,23 @@ describe('workout object tests', () => {
 		assert.fail('Not implemented');
 	});
 
+	it('should successfully add dates', () => {
+		assert.fail('Not implemented');
+	});
+
+	it('should successfully change description',() => {
+		assert.fail('Not implemented');
+	});
+
 	it('should successfully export', () => {
 		assert.fail('Not implemented');
 	});
 
-	it('should successfully add dates', () => {
+	it('should successfully output the last time the workout was completed',() => {
+		assert.fail('Not implemented');
+	});
+
+	it('should successfully remove dates', () => {
 		assert.fail('Not implemented');
 	});
 

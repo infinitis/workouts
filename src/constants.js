@@ -1,0 +1,22 @@
+const constants = {
+	ADD_WORKOUT:"ADD_WORKOUT",
+	CHANGE_ATTRIBUTE:"CHANGE_ATTRIBUTE",
+	CHANGE_VIEW:"CHANGE_VIEW",
+	CHANGE_WORKOUT_DESCRIPTION:"CHANGE_WORKOUT_DESCRIPTION",
+	CHANGE_WORKOUT_NAME:"CHANGE_WORKOUT_NAME",
+	DEFAULT_ATTRIBUTES:{
+		lower:false,
+		core:false,
+		back:false,
+		upper:false,
+		cardio:false,
+		martial:false,
+		other:false
+	},
+	DELETE_WORKOUT:"DELETE_WORKOUT",
+	NEW_WORKOUT:"NEW_WORKOUT",
+	REMOVE_WORKOUT:"REMOVE_WORKOUT",
+	SORT_VIEW:"SORT_VIEW"
+};
+Object.freeze(constants);
+export constants;
