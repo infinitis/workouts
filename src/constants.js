@@ -13,10 +13,19 @@ const constants = {
 		martial:false,
 		other:false
 	},
+	DEFAULT_ATTRIBUTES_ORDER:[
+		"lower",
+		"core",
+		"back",
+		"upper",
+		"cardio",
+		"martial",
+		"other"
+	],
 	DELETE_WORKOUT:"DELETE_WORKOUT",
 	NEW_WORKOUT:"NEW_WORKOUT",
 	REMOVE_WORKOUT:"REMOVE_WORKOUT",
 	SORT_VIEW:"SORT_VIEW"
 };
 Object.freeze(constants);
-export constants;
+export {constants};

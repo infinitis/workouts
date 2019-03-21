@@ -1,0 +1,26 @@
+:local(.container) {
+
+}
+
+:local(.table) {
+	border:1px solid black;
+	text-align:center;
+	border-collapse:collapse;
+	margin:4px;
+}
+
+:local(.table) > thead {
+
+}
+
+:local(.table) > thead > tr > th {
+	text-transform:capitalize;
+}
+
+:local(.table) > tbody {
+
+}
+
+:local(.table) > tbody > tr > td {
+
+}

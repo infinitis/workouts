@@ -17,12 +17,13 @@ const defaultState = {
 
 export default function view(state = defaultState,action) {
 	const {CHANGE_VIEW,SORT_VIEW} = constants;
-	if((action.workouts == void(0))||(!(action.workouts instanceof Array))) {
+	if((action.workouts == void(0))||(typeof action.workouts != "object" )) {
 		return state;
 	}
-	if(!action.workouts.every((x) => x instanceof workout)) {
+	if(!Object.keys(action.workouts).every((x) => x instanceof workout)) {
 		return state;
 	}
+	console.log('here');
 	switch(action.type) {
 		case CHANGE_VIEW:
 			if((action.view === void(0))||(action.view == state.view)) {
@@ -30,7 +31,10 @@ export default function view(state = defaultState,action) {
 			}
 			switch(action.view) {
 				case "manage":
-					const newStateManageView = {...state};
+					const newStateManageView = {
+						...state,
+						view:"manage"
+					};
 					newStateManageView.data = [];
 					for(let i=0;i<action.workouts.length;i++) {
 						newStateManageView.data.push({
@@ -42,7 +46,10 @@ export default function view(state = defaultState,action) {
 					}
 					return newStateManageView;
 				case "recent":
-					const newStateRecentView = {...state};
+					const newStateRecentView = {
+						...state,
+						view:"recent"
+					};
 					newStateRecentView.data = [];
 					for(let i=0;i<action.workouts.length;i++) {
 						for(let j=0;j<action.workouts[i].datesDone;j++) {

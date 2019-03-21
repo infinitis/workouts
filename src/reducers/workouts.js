@@ -1,7 +1,9 @@
+import workout from '../classes/workout.js';
+
 import {constants} from '../constants.js';
 
 export default function workouts(state = {},action) {
-	const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_NAME,DEFAULT_ATTRIBUTES,DELETE_WORKOUT,NEW_WORKOUT,REMOVE_WORKOUT} = constants;
+	const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,DEFAULT_ATTRIBUTES,DELETE_WORKOUT,NEW_WORKOUT,REMOVE_WORKOUT} = constants;
 	if(typeof action != "object") {
 		return state;
 	}
@@ -34,7 +36,7 @@ export default function workouts(state = {},action) {
 			} catch(err) {
 				return state;
 			}
-		case CHANGE_WORKOUT_NAME:
+		case CHANGE_WORKOUT_DESCRIPTION:
 			if(action.workout === void(0)) {
 				return state;
 			}
@@ -42,8 +44,31 @@ export default function workouts(state = {},action) {
 				return state;
 			}
 			try {
-				const newStateAfterNameChange = {...state};
-				newStateAfterNameChange[action.workout].setName(action.name);
+				const newStateAfterDescriptionChange = {...state};
+				newStateAfterDescriptionChange[action.workout].changeDescription(action.description);
+				return newStateAfterDescriptionChange;
+			} catch(err) {
+				console.error(err);
+				return state;
+			}
+		case CHANGE_WORKOUT_NAME:
+			if(action.workout === void(0)) {
+				return state;
+			}
+			if(state[action.workout] === void(0)) {
+				return state;
+			}
+			if(state[action.name] !== void(0)) {
+				return state;
+			}
+			try {
+				const newStateAfterNameChange = {
+					...state
+				};
+				const toAdd = new workout(newStateAfterNameChange[action.workout]);
+				toAdd.setName(action.name)
+				delete(newStateAfterNameChange[action.workout]);
+				newStateAfterNameChange[action.name] = toAdd;
 				return newStateAfterNameChange;
 			} catch(err) {
 				return state;

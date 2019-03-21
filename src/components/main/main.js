@@ -1,17 +1,40 @@
-import style from './main.css';
+import {connect} from 'react-redux';
 
-import {daysAgo} from '../days.ago/days.ago.js';
-import {header} from '../header/header.js';
-import {manage} from '../manage/manage.js';
-import {recent} from '../recent/recent.js';
+import Main from './main.component.js';
 
-export default class main extends React.component {
-	render() {
-		const props = this.props;
-		return createElement("div",{className:style.container},
-			createElement(header,null),
-			createElement(daysAgo,null),
-			(props.view=="manage")?createElement(manage,null):createElement(recent,null)
-		);
-	}
+import {constants} from '../../constants.js';
+const {CHANGE_VIEW} = constants;
+
+const mapStateToParentProps = (state) => {
+	const {workouts} = state;
+	return {
+		workouts
+	};
 }
+
+const mapStateToProps = (state) => {
+	const {view} = state.view;
+	return {
+		view
+	};
+};
+
+const mapDispatchToProps = (dispatch,ownProps) => {
+	return {
+		switchView:(view) => {
+			dispatch({
+				type:CHANGE_VIEW,
+				workouts:ownProps.workouts,
+				view
+			});
+		}
+	};
+};
+
+
+export const main = connect(
+	mapStateToParentProps
+)(connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Main));

@@ -6,9 +6,9 @@ import {Provider} from 'react-redux';
 
 import reducers from 'reducers/combined.js';
 
-import main from 'components/main/main.js';
+import {main} from 'components/main/main.js';
 
-export default function workoutsInit(anchor) {
+window.workoutsInit = (anchor) => {
 	if(!(anchor instanceof HTMLElement)) {
 		throw new Error("Invalid anchor");
 	}
@@ -19,4 +19,4 @@ export default function workoutsInit(anchor) {
 		),
 		anchor
 	);
-}
+};

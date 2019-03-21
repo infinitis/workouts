@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "build:dev": "webpack --config webpack.dev.config.js",
+    "start": "webpack-dev-server --config webpack.dev.config.js --open",
     "test": "nyc mocha --require @babel/register"
   },
   "repository": {
@@ -31,8 +32,10 @@
     "css-loader": "^2.1.1",
     "mocha": "^6.0.2",
     "nyc": "^13.3.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
   }
 }

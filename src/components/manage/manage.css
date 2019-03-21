@@ -1,0 +1,19 @@
+:local(.container) {
+
+}
+
+:local(.container) > input {
+
+}
+
+:local(.table) {
+
+}
+
+:local(.table) > thead {
+
+}
+
+:local(.table) > thead > tr > th {
+	text-transform:capitalize;
+}

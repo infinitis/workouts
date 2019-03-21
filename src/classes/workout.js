@@ -2,11 +2,18 @@ import {constants} from '../constants.js';
 const {DEFAULT_ATTRIBUTES} = constants;
 
 export default class workout {
-	constructor() {
-		this.attributes = {...DEFAULT_ATTRIBUTES};
-		this.datesDone = [];
-		this.name = "New Workout";
-		this.description = "";
+	constructor(toClone) {
+		if(toClone === void(0)) {
+			this.attributes = {...DEFAULT_ATTRIBUTES};
+			this.datesDone = [];
+			this.name = "New Workout";
+			this.description = "";
+		} else {
+			this.attributes = {...toClone.attributes};
+			this.datesDone = [...toClone.datesDone];
+			this.name = toClone.name;
+			this.description = toClone.description;
+		}
 	}
 	add(dates) { // add new workout to 
 		if(!(dates instanceof Array)) {
@@ -39,7 +46,7 @@ export default class workout {
 		throw new Error("Not implemented");
 	}
 	get last_done() {
-		throw new Error('Not implemented');
+		return this.datesDone.slice(0,1);
 	}
 	remove(date) {
 		throw new Error("Not implemented");
@@ -49,6 +56,9 @@ export default class workout {
 			throw new TypeError('Workout::setName(name) expects parameter `name` to be a string');
 		}
 		this.name = name;
+	}
+	get times_done() {
+		return this.datesDone.length;
 	}
 	toggleAttribute(attr) {
 		if(this.attributes[attr] === void(0)) {
