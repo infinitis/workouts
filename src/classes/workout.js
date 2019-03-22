@@ -13,6 +13,40 @@ export default class workout {
 			this.datesDone = [];
 			this.name = "New Workout";
 			this.description = "";
+			if(typeof toClone == "object") {
+				if(toClone.attributes !== void(0)) {
+					for(let i in toClone.attributes) {
+						if(toClone.attributes[i] === true) {
+							try {
+								this.toggleAttribute(i);
+							} catch(err) {
+
+							}
+						}
+					}
+				}
+				if(toClone.datesDone !== void(0)) {
+					try {
+						this.add(toClone.datesDone);
+					} catch(err) {
+
+					}
+				}
+				if(toClone.name !== void(0)) {
+					try {
+						this.setName(toClone.name);
+					} catch(err) {
+
+					}
+				}
+				if(toClone.description !== void(0)) {
+					try {
+						this.changeDescription(toClone.description);
+					} catch(err) {
+
+					}
+				}
+			}
 		}
 	}
 	add(dates) { // add new workout to datesDone
