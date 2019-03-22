@@ -18,15 +18,16 @@ export default class Manage extends React.Component {
 			workouts,
 			changeDescription,
 			changeName,
+			completeWorkout,
 			toggleAttribute
 		} = this.props;
-		console.log(workouts);
 		const headers = [
 			"workout name",
 			...DEFAULT_ATTRIBUTES_ORDER,
 			"times done",
 			"last done",
-			"description"
+			"description",
+			""
 		].map((x) => {
 			return createElement("th",{key:"head-"+x},x);
 		});
@@ -34,6 +35,7 @@ export default class Manage extends React.Component {
 			return createElement(manageRow,{
 				key:"row-"+i,
 				data:workouts[i],
+				complete:() => completeWorkout(i),
 				description:(val) => changeDescription(i,val),
 				name:(val) => changeName(i,val),
 				toggle:(attr) => toggleAttribute(i,attr)

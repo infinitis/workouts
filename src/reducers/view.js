@@ -15,15 +15,36 @@ const defaultState = {
 	sortOrder:"desc"
 };
 
+const generateDaysAgo = (workouts) => {
+	const daysAgo = {...defaultDaysAgo};
+	const now = new Date();
+	for(let i in workouts) {
+		const last = workouts[i].last_done[0];
+		if(last === void(0)) {
+			continue;
+		}
+		let lastDate = new Date(last);
+		lastDate = new Date(lastDate.getTime() + (now.getTimezoneOffset() * 60000));
+		for(let attr in workouts[i].attributes) {
+			if(workouts[i].attributes[attr]) {
+				const diff = Math.floor((now-lastDate)/(1000*60*60*24));
+				if((daysAgo[attr]<0)||(diff<daysAgo[attr])) {
+					daysAgo[attr] = diff;
+				}
+			}
+		}
+	}
+	return daysAgo;
+};
+
 export default function view(state = defaultState,action) {
 	const {CHANGE_VIEW,SORT_VIEW} = constants;
 	if((action.workouts == void(0))||(typeof action.workouts != "object" )) {
 		return state;
 	}
-	if(!Object.keys(action.workouts).every((x) => x instanceof workout)) {
+	if(!Object.keys(action.workouts).every((x) => action.workouts[x] instanceof workout)) {
 		return state;
 	}
-	console.log('here');
 	switch(action.type) {
 		case CHANGE_VIEW:
 			if((action.view === void(0))||(action.view == state.view)) {
@@ -44,6 +65,7 @@ export default function view(state = defaultState,action) {
 							description:actions.workouts[i].description
 						});
 					}
+					newStateManageView.daysAgo = generateDaysAgo(action.workouts);
 					return newStateManageView;
 				case "recent":
 					const newStateRecentView = {
@@ -51,14 +73,15 @@ export default function view(state = defaultState,action) {
 						view:"recent"
 					};
 					newStateRecentView.data = [];
-					for(let i=0;i<action.workouts.length;i++) {
-						for(let j=0;j<action.workouts[i].datesDone;j++) {
+					for(let i in action.workouts) {
+						for(let j=0;j<action.workouts[i].datesDone.length;j++) {
 							newStateRecentView.data.push({
-								name:actions.workouts[i].name,
-								date:actions.workouts[i].datesDone[j]
+								name:action.workouts[i].name,
+								date:action.workouts[i].datesDone[j]
 							});
 						}
 					}
+					newStateRecentView.daysAgo = generateDaysAgo(action.workouts);
 					return newStateRecentView;
 				default:
 					return state;

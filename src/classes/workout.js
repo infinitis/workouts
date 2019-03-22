@@ -3,19 +3,19 @@ const {DEFAULT_ATTRIBUTES} = constants;
 
 export default class workout {
 	constructor(toClone) {
-		if(toClone === void(0)) {
-			this.attributes = {...DEFAULT_ATTRIBUTES};
-			this.datesDone = [];
-			this.name = "New Workout";
-			this.description = "";
-		} else {
+		if((toClone !== void(0))&&(toClone instanceof workout)) {
 			this.attributes = {...toClone.attributes};
 			this.datesDone = [...toClone.datesDone];
 			this.name = toClone.name;
 			this.description = toClone.description;
+		} else {
+			this.attributes = {...DEFAULT_ATTRIBUTES};
+			this.datesDone = [];
+			this.name = "New Workout";
+			this.description = "";
 		}
 	}
-	add(dates) { // add new workout to 
+	add(dates) { // add new workout to datesDone
 		if(!(dates instanceof Array)) {
 			throw new TypeError('Workout::add(dates) expects parameter `dates` to be an array of dates');
 		}
@@ -27,14 +27,15 @@ export default class workout {
 			...new Set([
 				...this.datesDone,
 				...dates.map((date) => {
-					date = Date.parse(date);
-					return new Date(date.getTime() - (date.getTimezoneOffset() * 60000 ))
+					return new Date(date)
                     .toISOString()
                     .split("T")[0];
                 })
 			])
 		];
-		this.datesDone.sort();
+		this.datesDone.sort((a,b) => {
+			return a<b;
+		});
 	}
 	changeDescription(str) {
 		if(typeof str != "string") {
@@ -49,7 +50,11 @@ export default class workout {
 		return this.datesDone.slice(0,1);
 	}
 	remove(date) {
-		throw new Error("Not implemented");
+		for(let i=0;i<this.datesDone.length;i++) {
+			if(this.datesDone[i]==date) {
+				this.datesDone.splice(i,1);
+			}
+		}
 	}
 	setName(name) {
 		if(typeof name != "string") {

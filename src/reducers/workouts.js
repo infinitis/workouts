@@ -3,7 +3,7 @@ import workout from '../classes/workout.js';
 import {constants} from '../constants.js';
 
 export default function workouts(state = {},action) {
-	const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,DEFAULT_ATTRIBUTES,DELETE_WORKOUT,NEW_WORKOUT,REMOVE_WORKOUT} = constants;
+	const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DATE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,DEFAULT_ATTRIBUTES,DELETE_WORKOUT,NEW_WORKOUT,REMOVE_WORKOUT} = constants;
 	if(typeof action != "object") {
 		return state;
 	}
@@ -34,6 +34,25 @@ export default function workouts(state = {},action) {
 				newStateAfterChangeAttribute[action.workout].toggleAttribute(action.attribute);
 				return newStateAfterChangeAttribute;
 			} catch(err) {
+				return state;
+			}
+		case CHANGE_WORKOUT_DATE:
+			if(action.workout === void(0)) {
+				return state;
+			}
+			if((action.old === void(0))||(action.new === void(0))) {
+				return state;
+			}
+			if(action.old === action.new) {
+				return state;
+			}
+			const newStateAfterWorkoutDateChange = {...state};
+			try {
+				newStateAfterWorkoutDateChange[action.workout].remove(action.old);
+				newStateAfterWorkoutDateChange[action.workout].add([action.new]);
+				return newStateAfterWorkoutDateChange;
+			} catch(err) {
+				console.error(err);
 				return state;
 			}
 		case CHANGE_WORKOUT_DESCRIPTION:

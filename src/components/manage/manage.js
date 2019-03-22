@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Manage from './manage.component.js';
 
 import {constants} from '../../constants.js';
-const {CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,NEW_WORKOUT} = constants;
+const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,NEW_WORKOUT} = constants;
 
 const mapStateToProps = (state) => {
 	const {workouts} = state;
@@ -28,6 +28,17 @@ const mapDispatchToProps = (dispatch) => {
 				name:val
 			});
 		},
+		completeWorkout:(workout) => {
+			const now = new Date();
+			dispatch({
+				type:ADD_WORKOUT,
+				name:workout,
+				toAdd:[new Date(now.getTime() - (now.getTimezoneOffset() * 60000 ))
+					.toISOString()
+					.split("T")[0]
+				]
+            });
+        },
 		newWorkout:() => {
 			dispatch({
 				type:NEW_WORKOUT

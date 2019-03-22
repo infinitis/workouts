@@ -51,6 +51,22 @@ describe('workouts reducer',() => {
 
 	});
 
+	describe(CHANGE_WORKOUT_DESCRIPTION,() => {
+
+		it('should not change the state when an invalid action is given',() => {
+			assert.fail('Not implemented');
+		});
+
+		it('should not change the state when trying to change the description for a nonexistent workout',() => {
+			assert.fail('Not implemented');
+		});
+
+		it('should successfully change the description of an already existing workout',() => {
+			assert.fail('Not implemented');
+		});
+
+	});	
+
 	describe(DELETE_WORKOUT,() => {
 
 		it('should not change the state when an invalid action is given',() => {

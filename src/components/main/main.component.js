@@ -3,8 +3,7 @@ import style from './main.css';
 import {daysAgo} from '../days.ago/days.ago.js';
 import header from '../header/header.js';
 import {manage} from '../manage/manage.js';
-//import {recent} from '../recent/recent.js';
-//(props.view=="manage")?createElement(manage,null):createElement(recent,null)
+import {recent} from '../recent/recent.js';
 
 export default class Main extends React.Component {
 	constructor(props) {
@@ -24,7 +23,7 @@ export default class Main extends React.Component {
 			createElement("div",{className:style.viewContainer},
 				createElement(daysAgo,null),
 				createElement("input",{type:"button",onClick:this.switchView.bind(this,otherView),value:otherView}),
-				createElement(manage,null)
+				(props.view=="manage")?createElement(manage,null):createElement(recent,null)
 			)
 		);
 	}
