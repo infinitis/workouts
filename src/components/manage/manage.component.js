@@ -9,9 +9,13 @@ export default class Manage extends React.Component {
 	constructor(props) {
 		super(props);
 		this.addNew = this.addNew.bind(this);
+		this.handleSort = this.handleSort.bind(this);
 	}
 	addNew() {
 		this.props.newWorkout();
+	}
+	handleSort(key,event) {
+		this.props.sort(key,event.shiftKey);
 	}
 	render() {
 		const {
@@ -29,7 +33,7 @@ export default class Manage extends React.Component {
 			"description",
 			""
 		].map((x) => {
-			return createElement("th",{key:"head-"+x},x);
+			return createElement("th",{key:"head-"+x,onClick:this.handleSort.bind(this,x)},x);
 		});
 		const rows = Object.keys(workouts).map((i) => {
 			return createElement(manageRow,{

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Manage from './manage.component.js';
 
 import {constants} from '../../constants.js';
-const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,NEW_WORKOUT} = constants;
+const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,NEW_WORKOUT,SORT_VIEW} = constants;
 
 const mapStateToProps = (state) => {
 	const {workouts} = state;
@@ -42,6 +42,13 @@ const mapDispatchToProps = (dispatch) => {
 		newWorkout:() => {
 			dispatch({
 				type:NEW_WORKOUT
+			});
+		},
+		sort:(key,shift) => {
+			dispatch({
+				type:SORT_VIEW,
+				key,
+				shift
 			});
 		},
 		toggleAttribute:(name,attr) => {

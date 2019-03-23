@@ -11,8 +11,8 @@ const defaultState = {
 	view:"manage",
 	daysAgo:defaultDaysAgo,
 	data:[],
-	sortKey:"last_done",
-	sortOrder:"desc"
+	sortKey:["last_done"],
+	sortOrder:["desc"]
 };
 
 const generateDaysAgo = (workouts) => {
@@ -39,19 +39,20 @@ const generateDaysAgo = (workouts) => {
 
 export default function view(state = defaultState,action) {
 	const {CHANGE_VIEW,SORT_VIEW} = constants;
-	if((action.workouts == void(0))||(typeof action.workouts != "object" )) {
-		return state;
-	}
-	if(!Object.keys(action.workouts).every((x) => action.workouts[x] instanceof workout)) {
-		return state;
-	}
 	switch(action.type) {
 		case CHANGE_VIEW:
+			if((action.workouts == void(0))||(typeof action.workouts != "object" )) {
+				return state;
+			}
+			if(!Object.keys(action.workouts).every((x) => action.workouts[x] instanceof workout)) {
+				return state;
+			}
 			if((action.view === void(0))||(action.view == state.view)) {
 				return state;
 			}
 			switch(action.view) {
 				case "manage":
+					console.log('manage');
 					const newStateManageView = {
 						...state,
 						view:"manage"
@@ -66,8 +67,10 @@ export default function view(state = defaultState,action) {
 						});
 					}
 					newStateManageView.daysAgo = generateDaysAgo(action.workouts);
+					console.log(JSON.stringify(newStateManageView.data));
 					return newStateManageView;
 				case "recent":
+					console.log('recent');
 					const newStateRecentView = {
 						...state,
 						view:"recent"
@@ -82,25 +85,50 @@ export default function view(state = defaultState,action) {
 						}
 					}
 					newStateRecentView.daysAgo = generateDaysAgo(action.workouts);
+					console.log(JSON.stringify(newStateRecentView.data));
 					return newStateRecentView;
 				default:
 					return state;
 			}
 		case SORT_VIEW:
-			/*if(action.key === void(0)) {
+			if(action.key === void(0)) {
 				return state;
 			}
-			if(action.order === void(0)) {
-				return state;
-			}
-			let newSortKey = [...state.sortKey];
-			let newSortOrder = [...state.sortOrder];
-			const sortIndex = state.sortKey.indexOf(action.key);
-			if(sortIndex>-1) {
-				newSortOrder[sortIndex] = (newSortOrder[sortIndex]=="asc")?"desc":"asc";
+			const newStateAfterSort = {...state};
+			let newSortKey = [...newStateAfterSort.sortKey];
+			let newSortOrder = [...newStateAfterSort.sortOrder];
+			if(action.shift === true) {
+				const index = newSortKey.indexOf(action.key);
+				if(index>-1) {
+					newSortOrder[index] = (newSortOrder[index]=="asc")?"desc":"asc";
+				} else {
+					newSortKey.push(action.key);
+					newSortOrder.push("asc");
+				}
 			} else {
-				newSortkey*/
-			return state;
+				if((newSortKey[0] !== void(0))&&(newSortKey[0]==action.key)) {
+					newSortOrder = (newSortOrder[0]=="asc")?["desc"]:["asc"];
+				} else {
+					newSortOrder = ["asc"];
+				}
+				newSortKey = [action.key];
+			}
+			newStateAfterSort.sortKey = newSortKey;
+			newStateAfterSort.sortOrder = newSortOrder;
+			console.log(state.data);
+			console.log(newStateAfterSort.data);
+			newStateAfterSort.data.sort((a,b) => {
+				for(let i=0;i<newSortKey.length;i++) {
+					console.log(a[newSortKey[i]],b[newSortKey[i]]);
+					if(a[newSortKey[i]]<b[newSortKey[i]]) {
+						return (newSortOrder[i]=="asc")?-1:1;
+					} else if(a[newSortKey[i]]>b[newSortKey[i]]) {
+						return (newSortOrder[i]=="asc")?1:-1;
+					}
+				}
+				return 0;
+			});
+			return newStateAfterSort;
 		default:
 			return state;
 	}
