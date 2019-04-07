@@ -35,14 +35,14 @@ export default class Manage extends React.Component {
 		].map((x) => {
 			return createElement("th",{key:"head-"+x,onClick:this.handleSort.bind(this,x)},x);
 		});
-		const rows = Object.keys(workouts).map((i) => {
+		const rows = workouts.map((i) => {
 			return createElement(manageRow,{
-				key:"row-"+i,
-				data:workouts[i],
-				complete:() => completeWorkout(i),
-				description:(val) => changeDescription(i,val),
-				name:(val) => changeName(i,val),
-				toggle:(attr) => toggleAttribute(i,attr)
+				key:"row-"+i.name,
+				data:i,
+				complete:() => completeWorkout(i.name),
+				description:(val) => changeDescription(i.name,val),
+				name:(val) => changeName(i.name,val),
+				toggle:(attr) => toggleAttribute(i.name,attr)
 			});
 		});
 		return createElement("div",{className:style.container},

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import Main from './main.component.js';
 
 import {constants} from '../../constants.js';
-const {CHANGE_VIEW} = constants;
+const {CHANGE_VIEW,SORT_VIEW} = constants;
 
 const mapStateToParentProps = (state) => {
 	const {workouts} = state;
@@ -26,6 +26,11 @@ const mapDispatchToProps = (dispatch,ownProps) => {
 				type:CHANGE_VIEW,
 				workouts:ownProps.workouts,
 				view
+			});
+			dispatch({
+				type:SORT_VIEW,
+				key:(view=="manage")?"last_done":"date",
+				shift:false
 			});
 		}
 	};

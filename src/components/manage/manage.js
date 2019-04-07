@@ -6,9 +6,8 @@ import {constants} from '../../constants.js';
 const {ADD_WORKOUT,CHANGE_ATTRIBUTE,CHANGE_WORKOUT_DESCRIPTION,CHANGE_WORKOUT_NAME,NEW_WORKOUT,SORT_VIEW} = constants;
 
 const mapStateToProps = (state) => {
-	const {workouts} = state;
 	return {
-		workouts
+		workouts:state.view.data
 	};
 };
 

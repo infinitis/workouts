@@ -33,14 +33,9 @@ export default class manageRow extends React.Component {
 			"description",
 			"done"
 		].map((field) => {
-			let val;
 			if(field=="done") {
 				return createElement("td",{key:"cell-"+field},
 					createElement("input",{type:"button",value:"Completed",onClick:this.completeWorkout})
-				);
-			} else if(data[field] === void(0)) {
-				return createElement("td",{key:"cell-attr-"+field,onClick:this.toggleAttribute.bind(this,field)},
-					(data.attributes[field])?"Yes":"No"
 				);
 			} else if(field=="name") {
 				return createElement("td",{key:"cell-"+field},
@@ -50,8 +45,12 @@ export default class manageRow extends React.Component {
 				return createElement("td",{key:"cell-"+field},
 					createElement("textarea",{value:data[field],onChange:this.changeDescription})
 				);
+			} else if((field=="times_done")||(field=="last_done")) {
+				return createElement("td",{key:"cell-"+field},data[field]);
 			} else {
-				return createElement("td",{key:"cell-"+field},val);
+				return createElement("td",{key:"cell-attr-"+field,onClick:this.toggleAttribute.bind(this,field)},
+					(data[field])?"Yes":"No"
+				);
 			}
 		});
 		return createElement("tr",null,

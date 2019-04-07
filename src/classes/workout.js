@@ -81,7 +81,12 @@ export default class workout {
 		throw new Error("Not implemented");
 	}
 	get last_done() {
-		return this.datesDone.slice(0,1);
+		let res = this.datesDone.slice(0,1);
+		if(res.length==0) {
+			return "";
+		} else {
+			return res[0];
+		}
 	}
 	remove(date) {
 		for(let i=0;i<this.datesDone.length;i++) {

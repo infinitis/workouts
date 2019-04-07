@@ -19,8 +19,8 @@ const generateDaysAgo = (workouts) => {
 	const daysAgo = {...defaultDaysAgo};
 	const now = new Date();
 	for(let i in workouts) {
-		const last = workouts[i].last_done[0];
-		if(last === void(0)) {
+		const last = workouts[i].last_done;
+		if(last === "") {
 			continue;
 		}
 		let lastDate = new Date(last);
@@ -52,25 +52,25 @@ export default function view(state = defaultState,action) {
 			}
 			switch(action.view) {
 				case "manage":
-					console.log('manage');
 					const newStateManageView = {
 						...state,
 						view:"manage"
 					};
 					newStateManageView.data = [];
-					for(let i=0;i<action.workouts.length;i++) {
-						newStateManageView.data.push({
-							attributes:actions.workouts[i].attributes,
-							name:actions.workouts[i].name,
-							last_done:actions.workouts[i].last_done,
-							description:actions.workouts[i].description
-						});
+					for(let i in action.workouts) {
+						let toPush = {};
+						for(let j in DEFAULT_ATTRIBUTES) {
+							toPush[j] = action.workouts[i].attributes[j];
+						}
+						toPush.name = action.workouts[i].name;
+						toPush.times_done = action.workouts[i].times_done;
+						toPush.last_done = action.workouts[i].last_done;
+						toPush.description = action.workouts[i].description;
+						newStateManageView.data.push(toPush);
 					}
 					newStateManageView.daysAgo = generateDaysAgo(action.workouts);
-					console.log(JSON.stringify(newStateManageView.data));
 					return newStateManageView;
 				case "recent":
-					console.log('recent');
 					const newStateRecentView = {
 						...state,
 						view:"recent"
@@ -85,12 +85,12 @@ export default function view(state = defaultState,action) {
 						}
 					}
 					newStateRecentView.daysAgo = generateDaysAgo(action.workouts);
-					console.log(JSON.stringify(newStateRecentView.data));
 					return newStateRecentView;
 				default:
 					return state;
 			}
 		case SORT_VIEW:
+			console.log(SORT_VIEW);
 			if(action.key === void(0)) {
 				return state;
 			}
@@ -115,11 +115,8 @@ export default function view(state = defaultState,action) {
 			}
 			newStateAfterSort.sortKey = newSortKey;
 			newStateAfterSort.sortOrder = newSortOrder;
-			console.log(state.data);
-			console.log(newStateAfterSort.data);
 			newStateAfterSort.data.sort((a,b) => {
 				for(let i=0;i<newSortKey.length;i++) {
-					console.log(a[newSortKey[i]],b[newSortKey[i]]);
 					if(a[newSortKey[i]]<b[newSortKey[i]]) {
 						return (newSortOrder[i]=="asc")?-1:1;
 					} else if(a[newSortKey[i]]>b[newSortKey[i]]) {

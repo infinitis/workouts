@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import Recent from './recent.component.js';
 
 import {constants} from '../../constants.js';
-const {CHANGE_WORKOUT_DATE} = constants;
+const {CHANGE_WORKOUT_DATE,SORT_VIEW} = constants;
 
 const mapStateToProps = (state) => {
 	return {
-		data:state.view.data
+		data:state.view.data.slice(0,100)
 	};
 }
 
@@ -19,6 +19,13 @@ const mapDispatchToProps = (dispatch) => {
 				workout,
 				old,
 				new:date
+			});
+		},
+		handleSort:(key) => {
+			dispatch({
+				type:SORT_VIEW,
+				key,
+				shift:false
 			});
 		}
 	};
