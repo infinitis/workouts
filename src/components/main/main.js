@@ -30,6 +30,7 @@ const mapDispatchToProps = (dispatch,ownProps) => {
 			dispatch({
 				type:SORT_VIEW,
 				key:(view=="manage")?"last_done":"date",
+				order:(view==="manage")?"asc":"desc",
 				shift:false
 			});
 		}

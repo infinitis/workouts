@@ -104,11 +104,14 @@ export default function view(state = defaultState,action) {
 					newSortKey.push(action.key);
 					newSortOrder.push("asc");
 				}
+			} else if(action.order!==void(0)) {
+				newSortOrder = (action.order==="asc")?["asc"]:["desc"];
+				newSortKey = [action.key];
 			} else {
 				if((newSortKey[0] !== void(0))&&(newSortKey[0]==action.key)) {
 					newSortOrder = (newSortOrder[0]=="asc")?["desc"]:["asc"];
 				} else {
-					newSortOrder = ["desc"];
+					newSortOrder = ["asc"];
 				}
 				newSortKey = [action.key];
 			}
