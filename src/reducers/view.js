@@ -90,7 +90,6 @@ export default function view(state = defaultState,action) {
 					return state;
 			}
 		case SORT_VIEW:
-			console.log(SORT_VIEW);
 			if(action.key === void(0)) {
 				return state;
 			}
@@ -109,7 +108,7 @@ export default function view(state = defaultState,action) {
 				if((newSortKey[0] !== void(0))&&(newSortKey[0]==action.key)) {
 					newSortOrder = (newSortOrder[0]=="asc")?["desc"]:["asc"];
 				} else {
-					newSortOrder = ["asc"];
+					newSortOrder = ["desc"];
 				}
 				newSortKey = [action.key];
 			}
