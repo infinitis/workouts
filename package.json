@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "build:dev": "webpack --config webpack.dev.config.js",
-    "start": "webpack-dev-server --config webpack.dev.config.js --open",
+    "start": "webpack-dev-server --config webpack.dev.config.js",
     "test": "nyc mocha --require @babel/register"
   },
   "repository": {
