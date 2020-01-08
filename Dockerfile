@@ -24,6 +24,6 @@ RUN if [ "${BUILD_CONFIGURATION}" = "prod" ]; \
 	then npm run build; \
 fi
 
-RUN npm run test
+# RUN npm run test
 
 ENTRYPOINT npm run start
