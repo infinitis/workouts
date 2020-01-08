@@ -15,6 +15,7 @@ COPY package-lock.json .
 COPY src/ src/
 COPY test/ test/
 COPY index.html .
+COPY workouts.json .
 COPY webpack.config.js .
 COPY webpack.dev.config.js .
 COPY webpack.prod.config.js .
@@ -23,6 +24,6 @@ RUN if [ "${BUILD_CONFIGURATION}" = "prod" ]; \
 	then npm run build; \
 fi
 
-# RUN npm run test
+RUN npm run test
 
 ENTRYPOINT npm run start
