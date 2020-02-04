@@ -2,7 +2,12 @@
 Tool for quickly and easily managing and keeping track of workouts.
 
 ### To Do:
+- [x] move nyc to devdependcies
+- [x] update default sort order in recent
+- [x] fix scrolling css
 - [ ] fix tests
-- [ ] fix scrolling css
-- [ ] add volume(s) to auto-refresh
-- [ ] move nyc to devdependcies
+- [ ] make updates to attributes/new workouts update automatically
+	- [ ] currently update in the background and wait for reload of view
+- [ ] upgrade npm packages to next major versions
+	 - [ ] upgrade
+	 - [ ] verify & pass tests

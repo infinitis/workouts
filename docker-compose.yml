@@ -10,4 +10,7 @@ services:
     image: workouts
     ports:
       - "8080:8080"
-    restart: on-failure
+    volumes:
+      - type: bind
+        source: ./src
+        target: /home/node/app/src

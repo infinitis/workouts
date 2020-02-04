@@ -41,9 +41,11 @@ export default class Main extends React.Component {
 				createElement(header,null)
 			),
 			createElement("div",{className:style.viewContainer},
-				createElement(daysAgo,null),
-				createElement("input",{type:"button",onClick:this.switchView.bind(this,otherView),value:otherView}),
-				createElement("input",{type:"button",onClick:this.save,value:"Save Workouts"}),
+				createElement("div",{className:style.subHeaderContainer},
+					createElement(daysAgo,null),
+					createElement("input",{type:"button",onClick:this.switchView.bind(this,otherView),value:otherView}),
+					createElement("input",{type:"button",onClick:this.save,value:"Save Workouts"})
+				),
 				(view=="manage")?createElement(manage,null):createElement(recent,null)
 			)
 		);

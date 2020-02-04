@@ -1,7 +1,8 @@
 :local(.container) {
 	width:100%;
-	height:100%;
-	overflow:scroll;
+	height:80vh;
+	overflow-y:scroll;
+	overflow-x:hidden;
 }
 
 :local(.container) > input {
