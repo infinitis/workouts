@@ -14,7 +14,9 @@
 }
 
 :local(.table) > thead {
-
+	position:sticky;
+	top:0;
+	background-color:white;
 }
 
 :local(.table) > thead > tr > th {
