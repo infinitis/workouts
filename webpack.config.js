@@ -20,6 +20,9 @@ module.exports = {
 			}
 		]
 	},
+	devServer: {
+		disableHostCheck: true
+	},
 	plugins:[
 		new webpack.ProvidePlugin({
 			React:'react',

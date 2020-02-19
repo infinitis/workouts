@@ -9,5 +9,6 @@ Tool for quickly and easily managing and keeping track of workouts.
 - [ ] make updates to attributes/new workouts update automatically
 	- [ ] currently update in the background and wait for reload of view
 - [ ] upgrade npm packages to next major versions
-	 - [ ] upgrade
-	 - [ ] verify & pass tests
+	- [ ] makefile command to do automatically?
+	- [ ] upgrade
+	- [ ] verify & pass tests
