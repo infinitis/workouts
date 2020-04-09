@@ -8,7 +8,6 @@ RUN npm install
 
 FROM node:latest as app
 WORKDIR /home/node/app
-ARG BUILD_CONFIGURATION
 COPY --from=builder /app/node_modules ./node_modules/
 COPY package.json .
 COPY package-lock.json .
