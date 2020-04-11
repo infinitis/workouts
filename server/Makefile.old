@@ -1,0 +1,19 @@
+.DEFAULT: compile
+
+# compilation section
+CC=gcc
+CFLAGS=-g3 -Wall -Werror
+TARGET=server
+
+compile: server.o
+	$(CC) -o $(TARGET) server.o $(CFLAGS)
+
+%.o: %.c
+	$(CC) -c $^ -o $@ $(CFLAGS)
+
+start:
+	./$(TARGET)
+
+clean:
+	rm -f $(TARGET)
+	find . -type f -name "*.o" -delete

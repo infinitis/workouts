@@ -1,2 +1,21 @@
-.nyc_output/**
-.env
+workouts
+server/workouts-server
+workouts*/
+workouts*.tar.gz
+*.o
+
+# autoconf/automake
+.deps
+.dirstamp
+aclocal.m4
+autom4te.cache/
+build-aux/
+config.h
+config.h.in
+config.h.in~
+config.log
+config.status
+configure
+Makefile
+Makefile.in
+stamp-h1

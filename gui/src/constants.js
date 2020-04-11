@@ -1,0 +1,37 @@
+const constants = {
+	ADD_WORKOUT:"ADD_WORKOUT",
+	CHANGE_ATTRIBUTE:"CHANGE_ATTRIBUTE",
+	CHANGE_VIEW:"CHANGE_VIEW",
+	CHANGE_WORKOUT_DATE:"CHANGE_WORKOUT_DATE",
+	CHANGE_WORKOUT_NAME:"CHANGE_WORKOUT_NAME",
+	DEFAULT_ATTRIBUTES:{
+		lower:false,
+		core:false,
+		back:false,
+		upper:false,
+		cardio:false,
+		martial:false,
+		other:false
+	},
+	DEFAULT_ATTRIBUTES_ORDER:[
+		"lower",
+		"core",
+		"back",
+		"upper",
+		"cardio",
+		"martial",
+		"other"
+	],
+	DELETE_WORKOUT:"DELETE_WORKOUT",
+	NEW_WORKOUT:"NEW_WORKOUT",
+	REMOVE_WORKOUT:"REMOVE_WORKOUT",
+	SORT_VIEW:"SORT_VIEW",
+	SYNC_STATUS:{
+		STATUS_UNSYNCED:"STATUS_UNSYNCED",
+		STATUS_DESYNCED:"STATUS_DESYNCED",
+		STATUS_SYNCED:"STATUS_SYNCED"
+	},
+	UPDATE_SYNC_STATUS:"UPDATE_SYNC_STATUS"
+};
+Object.freeze(constants);
+export {constants};

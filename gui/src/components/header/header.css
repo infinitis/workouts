@@ -1,0 +1,26 @@
+:local(.container) {
+	width:100%;
+	height:10vh;
+	text-align:center;
+	border:2px solid black;
+	box-sizing:border-box;
+}
+
+:local(.h2) {
+
+}
+
+:local(.span) {
+	position:absolute;
+	top:0;
+	right:0;
+	font-size:x-small;
+}
+
+:local(.red) {
+	color:red;
+}
+
+:local(.green) {
+	color:green;
+}
