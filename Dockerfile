@@ -18,7 +18,7 @@ WORKDIR /workouts-${VERSION}/
 RUN autoreconf -ivf
 RUN ./configure
 RUN make
-# RUN make distcheck
+RUN make distcheck
 RUN make install
 
 FROM unit-tester

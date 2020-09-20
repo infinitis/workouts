@@ -87,11 +87,11 @@ package_stop:
 	docker stop $(PACKAGE_CONTAINER_NAME)
 	docker rm $(PACKAGE_CONTAINER_NAME)
 
-outdated: buid package_init
+outdated: package_init
 	-docker exec -it -w /home/node $$(docker container ls -q -f name=$(PACKAGE_CONTAINER_NAME)) npm outdated
 	$(MAKE) -s package_stop
 
-update: build package_init
+update: package_init
 	-docker exec -it -w /home/node $$(docker container ls -q -f name=$(PACKAGE_CONTAINER_NAME)) /bin/bash
 	$(MAKE) -s package_extract
 
