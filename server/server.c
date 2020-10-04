@@ -175,7 +175,7 @@ int body(char *buf, int buf_len, char **body_p) {
 void passthru(int sock, char *p,int len) {
 	char buffer[4096];
 	char *argv[10] = {NULL};
-	const char filename[] = "workouts";
+	char filename[] = "workouts";
 	
 	char *home = getenv("HOME");
 	strcpy(buffer,"HOME=");

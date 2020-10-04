@@ -30,9 +30,6 @@ COPY --from=core /workouts-${VERSION}/ /build/
 RUN ./configure
 RUN make check
 
-WORKDIR /build/test/unit
-RUN make memcheck
-
 FROM node:latest as integration-tester
 ARG VERSION
 

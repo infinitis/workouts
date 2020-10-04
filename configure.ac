@@ -53,8 +53,8 @@ fi
 AM_CONDITIONAL([ENABLE_GUI],[test x$enable_gui = xyes])
 
 dnl disable memcheck if valgrind not found
-if test "x$enable_memcheck" != "xyes"; then
-  if test -n "$HAVE_VALGRIND"; then
+if test "x$enable_memcheck" != "xno"; then
+  if test -z "$VALGRIND"; then
     enable_memcheck=no
   fi
 fi
