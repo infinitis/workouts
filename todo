@@ -1,0 +1,20 @@
+To Do:
+-refactor into cli+node frontend
+	- [x] cli
+	- [x] create interface w/ gui
+	- [ ] update cli w/ getopt instead of own rolled
+	- [ ] finish extended features necessary for gui/backend integration
+	- [ ] migrate data to sqlite db
+	- [ ] rename workouts functionality
+
+Later:
+- [ ] workouts rm [!name] [!date]
+- [ ] update date of recent workout from cli
+	- [ ] rm then add
+- [ ] make attributes customizable
+	- [ ] modify workout.js
+- [ ] add delete functionality
+- [ ] add attribute add functionality to gui
+- [ ] workouts rm attr [!name]
+- [ ] add --format option to ls commands
+- [ ] bash completion
