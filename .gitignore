@@ -9,6 +9,7 @@ workouts*.tar.gz
 .dirstamp
 aclocal.m4
 autom4te.cache/
+autoscan.log
 build-aux/
 config.h
 config.h.in
@@ -16,6 +17,7 @@ config.h.in~
 config.log
 config.status
 configure
+configure.scan
 Makefile
 Makefile.in
 stamp-h1
