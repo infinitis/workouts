@@ -2,25 +2,35 @@ To Do:
 -refactor into cli+node frontend
 	- [x] cli
 	- [x] create interface w/ gui
+	- [x] update all printf calls to log functionality
 	- [ ] update cli w/ getopt instead of own rolled
 		- [x] done
 		- [ ] add help
-		- [ ] add verbose
+		- [x] add verbose
 		- [ ] fix build issues
 		- [ ] make sure tests pass
-	- [ ] update all printf calls to log functionality
+			- [ ] add new unit tests
+				- [x] add
+				- [x] attr
+				- [x] ls
+				- [ ] new
+				- [ ] recent
+				- [ ] toggle
+			- [ ] add atexit function in test_utils to delete db on test failure
+				- [ ] add assert(0) at end of test that adds to db before reset_env()
 	- [ ] finish extended features necessary for gui/backend integration
+		- [ ] update date of recent workout from cli
+			- [ ] rm then add
+		- [ ] workouts rm [!name] [!date]
+		- [ ] rename workouts functionality
 	- [ ] migrate data to sqlite db
-	- [ ] rename workouts functionality
+		- [ ] consider how to keep up-to-date/backups
 
 Later:
-- [ ] workouts rm [!name] [!date]
-- [ ] update date of recent workout from cli
-	- [ ] rm then add
+- [ ] workouts rm attr [!name]
 - [ ] make attributes customizable
 	- [ ] modify workout.js
 - [ ] add delete functionality
 - [ ] add attribute add functionality to gui
-- [ ] workouts rm attr [!name]
 - [ ] add --format option to ls commands
 - [ ] bash completion
