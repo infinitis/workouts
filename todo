@@ -9,11 +9,11 @@ To Do:
 			- [ ] rm then add
 		- [ ] workouts rm [!name] [!date]
 		- [ ] rename workouts functionality
+	- [ ] consider implications of spaces/stripping quotes from names
 	- [ ] migrate data to sqlite db
 		- [ ] consider how to keep up-to-date/backups
 
 Later:
-- [ ] consider implications of spaces/stripping quotes from names
 - [ ] workouts rm attr [!name]
 - [ ] make attributes customizable
 	- [ ] modify workout.js
