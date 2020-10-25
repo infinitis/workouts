@@ -3,14 +3,7 @@ To Do:
 	- [x] cli
 	- [x] create interface w/ gui
 	- [x] update all printf calls to log functionality
-	- [ ] update cli w/ getopt instead of own rolled
-		- [x] done
-		- [x] add help
-		- [x] add verbose
-		- [x] fix build issues
-		- [ ] make sure tests pass
-			- [x] add new unit tests
-			- [ ] fix integration tests
+	- [x] update cli w/ getopt instead of own rolled
 	- [ ] finish extended features necessary for gui/backend integration
 		- [ ] update date of recent workout from cli
 			- [ ] rm then add
