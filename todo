@@ -9,15 +9,8 @@ To Do:
 		- [x] add verbose
 		- [x] fix build issues
 		- [ ] make sure tests pass
-			- [ ] add new unit tests
-				- [x] add
-				- [x] attr
-				- [x] ls
-				- [ ] new
-				- [ ] recent
-				- [ ] toggle
-			- [ ] add atexit function in test_utils to delete db on test failure
-				- [ ] add assert(0) at end of test that adds to db before reset_env()
+			- [x] add new unit tests
+			- [ ] fix integration tests
 	- [ ] finish extended features necessary for gui/backend integration
 		- [ ] update date of recent workout from cli
 			- [ ] rm then add
