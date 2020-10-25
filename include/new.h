@@ -8,6 +8,10 @@
 #include<opt.h>
 #include<usage.h>
 
-int new_workout(int,int,char**);
+#define NEW_MESSAGE_NUM_ATTRS_MISMATCH "number of attributes don't match\n"
+#define NEW_MESSAGE_INSERT_FAILED "workout insert failed\n"
+#define NEW_MESSAGE_WORKOUT_ADDED "New workout added: %s\n"
+
+int new_workout(int,char**);
 
 #endif

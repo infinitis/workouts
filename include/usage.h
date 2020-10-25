@@ -3,6 +3,8 @@
 
 #include<stdio.h>
 
+#include<log.h>
+
 void usage();
 
 #endif

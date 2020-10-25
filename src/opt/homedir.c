@@ -3,7 +3,7 @@
 #define DB_FILENAME "workouts.db"
 #define DB_FILENAME_LENGTH 11
 
-int set_homedir(char *to_set) {
+int opt_set_homedir(char *to_set) {
 	int len = strlen(to_set);
 	if(len<1) { return -1; }
 

@@ -7,6 +7,10 @@
 #include<data.h>
 #include<usage.h>
 
-int toggle(int,int,char**);
+#define TOGGLE_MESSAGE_WRONG_NUM_ARGS "wrong number of arguments for toggle\n"
+#define TOGGLE_MESSAGE_UNABLE "unable to toggle attribute %s for workout %s\n"
+#define TOGGLE_MESSAGE_SUCCESS "Successfully toggled %s attribute for workout %s\n"
+
+int toggle(int,char**);
 
 #endif

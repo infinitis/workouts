@@ -1,21 +1,23 @@
 #include<usage.h>
 
 void usage() {
-	printf("Usage:\n");
-	printf("\tworkouts [options] [ls] [--filter {attribute filter}] [search term]\n");
-	printf("\tworkouts [options] add [!name] [date]\n");
-	printf("\tworkouts [options] new [!name] [attributes]\n");
-	printf("\tworkouts [options] attr [ls]\n");
-	printf("\tworkouts [options] attr add [!name]\n");
-	printf("\tworkouts [options] toggle [!workout name] [!attr]\n");
-	printf("\tworkouts [options] recent\n");
-	printf("\n");
-	printf("Options:\n");
-	printf("\t--help,-h\n");
-	printf("\t--homedir=<path>\n");
-	printf("\t--rows=<number>\n");
-	printf("\t--verbose,-v\n");
-	printf("\n");
-	printf("{attribute filter} refers to string in bit flags corresponding to active attributes.\n\n");
-	printf("The character '!' in front of a variable name means required.\n");
+	log_err("Usage:\n");
+	log_err("\tworkouts [options] [ls] [--filter {attribute filter}] [search term]\n");
+	log_err("\tworkouts [options] add [!name] [date]\n");
+	log_err("\tworkouts [options] new [!name] [attributes]\n");
+	log_err("\tworkouts [options] attr [ls]\n");
+	log_err("\tworkouts [options] attr add [!name]\n");
+	log_err("\tworkouts [options] toggle [!workout name] [!attr]\n");
+	log_err("\tworkouts [options] recent\n");
+	log_err("\n");
+	log_err("Options:\n");
+	log_err("\t--help, -h\n");
+	log_err("\t--homedir, -d <path>\n");
+	log_err("\t--quiet, -q\n");
+	log_err("\t--rows, -r <number>\n");
+	log_err("\t--verbose, -v\n");
+	log_err("\n");
+	log_err("{attribute filter} refers to a string of bit flags (0 = not, 1 = has, x = either) corresponding to active attributes.\n");
+	log_err("Ex: 0100x00\n\n");
+	log_err("The character '!' in front of a variable name means required.\n");
 }

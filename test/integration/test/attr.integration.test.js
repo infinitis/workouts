@@ -57,7 +57,6 @@ describe('attr integration tests', () => {
 
 			await assert.doesNotReject(async() => {
 				const {stdout,stderr} = await exec(`./workouts attr ls`);
-
 				let expected = "";
 				for(const attr of attributes) {
 					expected += `${attr}\n`;

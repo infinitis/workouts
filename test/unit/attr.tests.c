@@ -3,87 +3,44 @@
 int main() {
 	setup_env();
 
-	attribute_count_test();
-	attribute_get_test();
-	attribute_index_test();
-	attribute_insert_test();
-	attribute_parse_test();
+	attr_basic_test();
 
 	clean();
 
 	return EXIT_SUCCESS;
 }
 
-void attribute_count_test() {
-	assert(attribute_count()==0);
+void attr_basic_test() {
+	char *argv[] = {
+		"attr",
+		"add",
+		"alsdkfjalksdfj",
+		NULL
+	};
 
-	assert(attribute_insert("test")==1);
-	assert(attribute_count()==1);
+	char *ls_argv[] = {
+		"attr",
+		"ls",
+		NULL
+	};
 
-	assert(attribute_insert("test2")==1);
-	assert(attribute_count()==2);
+	char *bad_argv[] = {
+		"attr",
+		"hahaha",
+		"asdfoiasdf",
+		NULL
+	};
 
-	reset_env();
-}
+	assert(EXIT_SUCCESS==attr(1,ls_argv));
+	assert(EXIT_SUCCESS==attr(2,ls_argv));
 
-int i;
+	assert(EXIT_SUCCESS==attr(1,bad_argv));
+	assert(EXIT_FAILURE==attr(2,bad_argv));
+	assert(EXIT_FAILURE==attr(3,bad_argv));
 
-void attribute_get_test() {
-	i = 0;
-	assert(attribute_get(&attribute_get_test_helper)==1);
-	assert(i==0);
-
-	assert(attribute_insert("test")==1);
-	assert(attribute_get(&attribute_get_test_helper)==1);
-	assert(i==1);
-
-	reset_env();
-}
-
-void attribute_get_test_helper(const unsigned char *attr) {
-	i++;
-}
-
-void attribute_index_test() {
-	assert(attribute_index("test")<0);
-
-	assert(attribute_insert("test")==1);
-	assert(attribute_index("test")==0);
-	assert(attribute_index("test2")<0);
-
-	assert(attribute_insert("test2")==1);
-	assert(attribute_index("test")==0);
-	assert(attribute_index("test2")==1);
-
-	assert(attribute_insert("hello")==1);
-	assert(attribute_index("test")==0);
-	assert(attribute_index("test2")==1);
-	assert(attribute_index("hello")==2);
+	assert(EXIT_SUCCESS==attr(1,argv));
+	assert(EXIT_FAILURE==attr(2,argv));
+	assert(EXIT_SUCCESS==attr(3,argv));
 
 	reset_env();
-}
-
-void attribute_insert_test() {
-	assert(attribute_insert("test")==1);
-
-	reset_env();
-}
-
-void attribute_parse_test() {
-	int required = 0;
-	int exclude = 0;
-	
-	assert(attribute_parse("311",&required,&exclude)<0);
-
-	required = 0;
-	exclude = 0;
-	assert(attribute_parse("011",&required,&exclude)==1);
-	assert(required==3);
-	assert(exclude==4);
-
-	required = 0;
-	exclude = 0;
-	assert(attribute_parse("x01",&required,&exclude)==1);
-	assert(required==1);
-	assert(exclude==2);
 }

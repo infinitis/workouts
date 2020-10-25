@@ -1,4 +1,4 @@
-#include<workout.tests.h>
+#include<data.workout.tests.h>
 
 int main() {
 	setup_env();

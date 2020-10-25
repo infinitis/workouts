@@ -1,18 +1,18 @@
 #include<toggle.h>
 
-int toggle(int i, int argc, char **argv) {
-	if(i+2!=argc) {
-		printf("wrong number of arguments for toggle\n");
+int toggle(int argc, char **argv) {
+	if(3!=argc) {
+		log_err(TOGGLE_MESSAGE_WRONG_NUM_ARGS);
 		usage();
 		return EXIT_FAILURE;
 	}
 
-	if(workout_toggle(argv[i],argv[i+1])<0) {
-		printf("unable to toggle attribute %s for workout %s\n",argv[i+1],argv[i]);
+	if(workout_toggle(argv[1],argv[2])<0) {
+		log_err(TOGGLE_MESSAGE_UNABLE,argv[2],argv[1]);
 		return EXIT_FAILURE;
 	}
 
-	printf("Successfully toggled %s attribute for workout %s\n",argv[i+1],argv[i]);
+	log_msg(TOGGLE_MESSAGE_SUCCESS,argv[2],argv[1]);
 
 	return EXIT_SUCCESS;
 }

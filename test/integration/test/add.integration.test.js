@@ -55,7 +55,7 @@ describe('add integration tests', () => {
 		await assert.doesNotReject(async() => await exec('./workouts add workout1 2020-06-10'));
 
 		await assert.doesNotReject(async() => {
-			const {stdout,stderr} = await exec('./workouts workout1');
+			const {stdout,stderr} = await exec('./workouts ls workout1');
 
 			let expected = `Attributes:\tlower\tupper\t\n`;
 			expected += `workout1 [2] [Last done: 2020-07-10]\n`;

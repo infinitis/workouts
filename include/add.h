@@ -6,8 +6,9 @@
 #include<time.h>
 
 #include<data.h>
+#include<log.h>
 #include<usage.h>
 
-int add(int,int,char**);
+int add(int,char**);
 
 #endif

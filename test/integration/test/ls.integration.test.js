@@ -36,7 +36,7 @@ describe('ls integration tests', () => {
 
 	it('should successfully limit rows grabbed', async() => {
 		await assert.doesNotReject(async() => {
-			const {stdout,stderr} = await exec('./workouts --rows=1');
+			const {stdout,stderr} = await exec('./workouts --rows=1 ls');
 
 			let expected = `Attributes:\tlower\tupper\t\n`;
 			expected += `apple [3] [Last done: N/A]\n`;
@@ -46,7 +46,7 @@ describe('ls integration tests', () => {
 
 	it('should successfully search for workouts', async() => {
 		await assert.doesNotReject(async() => {
-			const {stdout,stderr} = await exec('./workouts workout');
+			const {stdout,stderr} = await exec('./workouts ls workout');
 
 			let expected = `Attributes:\tlower\tupper\t\n`;
 			expected += `workout1 [2] [Last done: N/A]\n`;

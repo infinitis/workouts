@@ -3,12 +3,9 @@
 
 #include<test_utils.h>
 
+#include<attr.h>
+
 int main();
-void attribute_count_test();
-void attribute_get_test();
-void attribute_get_test_helper(const unsigned char*);
-void attribute_index_test();
-void attribute_insert_test();
-void attribute_parse_test();
+void attr_basic_test();
 
 #endif

@@ -36,7 +36,7 @@ describe('toggle integration tests', () => {
 		});
 
 		await assert.doesNotReject(async() => {
-			const {stdout,stderr} = await exec('./workouts workout1');
+			const {stdout,stderr} = await exec('./workouts ls workout1');
 
 			let expected = `Attributes:\tlower\tupper\t\n`;
 			expected += `workout1 [3] [Last done: N/A]\n`;
@@ -51,7 +51,7 @@ describe('toggle integration tests', () => {
 		});
 
 		await assert.doesNotReject(async() => {
-			const {stdout,stderr} = await exec('./workouts workout1');
+			const {stdout,stderr} = await exec('./workouts ls workout1');
 
 			let expected = `Attributes:\tlower\tupper\t\n`;
 			expected += `workout1 [2] [Last done: N/A]\n`;

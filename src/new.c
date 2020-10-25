@@ -1,21 +1,17 @@
 #include<new.h>
 
-int new_workout(int i, int argc, char **argv) {
-	if(i>=argc) {
-		printf("not enough arguments for new\n");
-		usage();
-		return EXIT_FAILURE;
-	}
-
+int new_workout(int argc, char **argv) {
+	if(argc<2) { return EXIT_FAILURE; }
+	
 	// check if attribute template provided
 	unsigned int attr_flags = 0;
-	if(i+1<argc) {
+	if(2<argc) {
 		int count = attribute_count();
-		char *attr_p = argv[i+1];
+		char *attr_p = argv[2];
 		int len = strlen(attr_p);
 
 		if(len!=count) {
-			printf("number of attributes don't match\n");
+			log_err(NEW_MESSAGE_NUM_ATTRS_MISMATCH);
 			return EXIT_FAILURE;
 		}
 
@@ -27,12 +23,12 @@ int new_workout(int i, int argc, char **argv) {
 		}
 	}
 
-	if(workout_insert(argv[i],attr_flags)<0) {
-		printf("workout insert failed\n");
+	if(workout_insert(argv[1],attr_flags)<0) {
+		log_err(NEW_MESSAGE_INSERT_FAILED);
 		return EXIT_FAILURE;
 	}
 
-	printf("New workout added: %s\n",argv[i]);
+	log_msg(NEW_MESSAGE_WORKOUT_ADDED,argv[1]);
 
 	return EXIT_SUCCESS;
 }

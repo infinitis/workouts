@@ -1,17 +1,14 @@
 #include<recent.h>
 
+#define RECENT_PRINT_FORMAT "%s\t%s\n"
+
 void print_recent(const unsigned char *workout, const unsigned char *date) {
-	printf("%s\t%s\n",workout,date);
+	printf(RECENT_PRINT_FORMAT,workout,date);
 }
 
-int recent(int i, int argc, char **argv) {
-	if(i!=argc) {
-		printf("wrong number of arguments for recent\n");
-		return EXIT_FAILURE;
-	}
-
+int recent() {
 	if(recent_get(global_opts.rows,&print_recent)<0) {
-		printf("command failed\n");
+		log_err(RECENT_COMMAND_FAILED);
 		return EXIT_FAILURE;
 	}
 

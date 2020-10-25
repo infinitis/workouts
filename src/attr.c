@@ -1,22 +1,20 @@
 #include<attr.h>
 
-int attr(int i, int argc, char **argv) {
-	if(i>argc) { return EXIT_FAILURE; }
+int attr(int argc, char **argv) {
+	if(1==argc) { return attr_ls(); }
 
-	if(i==argc) { return attr_ls(); }
-
-	if(0==memcmp(argv[i],"add",3)) {
-		if(i+2!=argc) {
-			printf("wrong number of arguments for attr add\n");
+	if(0==strcmp(argv[1],ATTR_ADD_STRING)) {
+		if(3!=argc) {
+			log_err(ATTR_MESSAGE_WRONG_NO_ARGS);
 			usage();
 			return EXIT_FAILURE;
 		}
 
-		return attr_add(argv[i+1]);
+		return attr_add(argv[2]);
 	}
-
-	if(i+1!=argc) {
-		printf("unknown command attr \"%s\"\n",argv[i+1]);
+	
+	if((2!=argc)||(0!=strcmp(argv[1],ATTR_LS_STRING))) {
+		log_err(ATTR_MESSAGE_UNKNOWN_COMMAND,argv[1]);
 		usage();
 		return EXIT_FAILURE;
 	}
@@ -26,19 +24,16 @@ int attr(int i, int argc, char **argv) {
 
 int attr_add(char *name) {
 	if(attribute_insert(name)<0) {
-		printf("attribute insert failed\n");
+		log_err(ATTR_MESSAGE_ATTR_INSERT_FAILED);
 		return EXIT_FAILURE;
 	}
 
-	printf("New attribute added: %s\n",name);
+	log_msg(ATTR_MESSAGE_ATTR_ADDED,name);
 	return EXIT_SUCCESS;
 }
 
 int attr_ls() {
-	if(attribute_get(&print_attr)<0) {
-		printf("command failed\n");
-		return EXIT_FAILURE;
-	}
+	if(attribute_get(&print_attr)<0) { return EXIT_FAILURE; }
 
 	return EXIT_SUCCESS;
 }

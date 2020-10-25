@@ -28,7 +28,7 @@ WORKDIR /build
 COPY --from=core /workouts-${VERSION}/ /build/
 
 RUN ./configure
-RUN make check
+RUN make check || cat test/unit/test-suite.log
 
 FROM node:latest as integration-tester
 ARG VERSION

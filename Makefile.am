@@ -6,10 +6,10 @@ workouts_SOURCES = \
 	src/attr.c \
 	src/data/attr.c \
 	src/default.c \
+	src/log.c \
 	src/ls.c \
 	src/main.c \
 	src/new.c \
-	src/opt.c \
 	src/recent.c \
 	src/toggle.c \
 	src/usage.c \
@@ -17,13 +17,14 @@ workouts_SOURCES = \
 	src/data/setup.c \
 	src/data/workout.c \
 	src/opt/homedir.c \
-	src/opt/rows.c \
-	src/opt/verbose.c
+	src/opt/loglvl.c \
+	src/opt/rows.c
 workouts_SOURCES += \
 	include/add.h \
 	include/attr.h \
 	include/data.h \
 	include/default.h \
+	include/log.h \
 	include/ls.h \
 	include/main.h \
 	include/new.h \

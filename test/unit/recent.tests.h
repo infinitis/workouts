@@ -3,10 +3,9 @@
 
 #include<test_utils.h>
 
-int main();
-void recent_get_test();
-void recent_get_test_helper(const unsigned char*,const unsigned char*);
-void recent_insert_test();
+#include<recent.h>
 
+int main();
+void recent_basic_test();
 
 #endif

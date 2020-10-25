@@ -2,6 +2,7 @@
 #define __TEST_UTILS_H_
 
 #include<assert.h>
+#include<errno.h>
 #include<stdio.h>
 #include<stdlib.h>
 

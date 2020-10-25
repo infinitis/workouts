@@ -6,11 +6,11 @@ void clean() {
 }
 
 void reset_env() {
-	assert(remove(global_opts.db_location)==0);
+	assert((remove(global_opts.db_location)==0)||(errno==ENOENT));
 	assert(setup()==1);
 }
 
 void setup_env() {
 	assert(defaults()==0);
-	assert(setup()==1);
+	reset_env();
 }

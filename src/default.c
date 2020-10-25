@@ -1,5 +1,12 @@
 #include<default.h>
 
+struct options global_opts = {
+	NULL, /* db_location */
+	NULL, /* homedir */
+	-1, /* rows */
+	0 /* verbose */
+};
+
 int defaults() {
 	char *p;
 	
@@ -8,19 +15,19 @@ int defaults() {
 	if(p==NULL) {
 		p = getenv("HOME");
 		if(NULL==p) {
-			printf("HOME or WORKOUTS_HOME env variable must be defined\n");
+			log_err("HOME or WORKOUTS_HOME env variable must be defined\n");
 			return -1;
 		}
 	}
 
-	if(set_homedir(p)<0) {
-		printf("HOME or WORKOUTS_HOME env value invalid\n");
+	if(opt_set_homedir(p)<0) {
+		log_err("HOME or WORKOUTS_HOME env value invalid\n");
 		return -1;
 	}
 
-	set_rows(-1);
+	opt_set_rows(-1);
 	
-	set_verbose(0);
+	opt_set_log_level(LOG_LEVEL_DEFAULT);
 
 	return 0;
 }

@@ -24,7 +24,10 @@ describe('new integration tests', () => {
 	});
 
 	it('should fail to create a workout when given the wrong number of attributes', async() => {
-		await assert.rejects(async() => await exec('./workouts new workout1 0'));
+		await assert.rejects(async() => {
+			const res = await exec('./workouts new workout1 0');
+			console.log(res);
+		});
 		await assert.rejects(async() => await exec('./workouts new workout1 110'));
 	});
 
