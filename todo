@@ -5,9 +5,9 @@ To Do:
 	- [x] update all printf calls to log functionality
 	- [ ] update cli w/ getopt instead of own rolled
 		- [x] done
-		- [ ] add help
+		- [x] add help
 		- [x] add verbose
-		- [ ] fix build issues
+		- [x] fix build issues
 		- [ ] make sure tests pass
 			- [ ] add new unit tests
 				- [x] add
@@ -27,6 +27,7 @@ To Do:
 		- [ ] consider how to keep up-to-date/backups
 
 Later:
+- [ ] consider implications of spaces/stripping quotes from names
 - [ ] workouts rm attr [!name]
 - [ ] make attributes customizable
 	- [ ] modify workout.js
