@@ -5,8 +5,7 @@ To Do:
 	- [x] update all printf calls to log functionality
 	- [x] update cli w/ getopt instead of own rolled
 	- [ ] finish extended features necessary for gui/backend integration
-		- [ ] workouts rm [!name] [!date]
-			- [ ] workouts rm attr [!name]
+		- [ ] workouts rm [--attr|--workout] [!name] [!date]
 		- [ ] rename workouts functionality
 		- [ ] update date of recent workout from cli
 			- [ ] rm then add
