@@ -5,15 +5,15 @@ To Do:
 	- [x] update all printf calls to log functionality
 	- [x] update cli w/ getopt instead of own rolled
 	- [ ] finish extended features necessary for gui/backend integration
+		- [ ] workouts rm [!name] [!date]
+			- [ ] workouts rm attr [!name]
+		- [ ] rename workouts functionality
 		- [ ] update date of recent workout from cli
 			- [ ] rm then add
-		- [ ] workouts rm [!name] [!date]
-		- [ ] rename workouts functionality
 	- [ ] migrate data to sqlite db
 		- [ ] consider how to keep up-to-date/backups
 
 Later:
-- [ ] workouts rm attr [!name]
 - [ ] make attributes customizable
 	- [ ] modify workout.js
 - [ ] add delete functionality
