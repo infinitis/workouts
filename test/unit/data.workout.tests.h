@@ -4,6 +4,8 @@
 #include<test_utils.h>
 
 int main();
+void workout_delete_all_recent_test();
+void workout_delete_all_recent_test_helper(const char*, const char*);
 void workout_delete_test();
 void workout_get_test();
 void workout_get_test_helper();

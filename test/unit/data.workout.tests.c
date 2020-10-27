@@ -3,6 +3,7 @@
 int main() {
 	setup_env();
 
+	workout_delete_all_recent_test();
 	workout_delete_test();
 	workout_get_test();
 	workout_insert_test();
@@ -15,6 +16,37 @@ int main() {
 }
 
 int i;
+
+void workout_delete_all_recent_test() {
+	assert(workout_insert("test",0)==1);
+
+	assert(recent_insert("test","2020-10-31")==1);
+	assert(recent_insert("test","2020-10-30")==1);
+
+	i = 0;
+	assert(workout_get(NULL,NULL,-1,&workout_get_test_helper)==1);
+	assert(i==1);
+
+	i = 0;
+	assert(recent_get(-1,&workout_delete_all_recent_test_helper)==1);
+	assert(i==2);
+
+	assert(workout_delete("test")==1);
+
+	i = 0;
+	assert(workout_get(NULL,NULL,-1,&workout_get_test_helper)==1);
+	assert(i==0);
+
+	i = 0;
+	assert(recent_get(1,&workout_delete_all_recent_test_helper)==1);
+	assert(i==0);
+
+	reset_env();
+}
+
+void workout_delete_all_recent_test_helper(const unsigned char *name, const unsigned char *date) {
+	i++;
+}
 
 void workout_delete_test() {
 	i = 0;
