@@ -4,6 +4,7 @@ int main() {
 	setup_env();
 
 	attribute_count_test();
+	attribute_delete_bit_shift_test();
 	attribute_delete_test();
 	attribute_get_test();
 	attribute_index_test();
@@ -25,6 +26,38 @@ void attribute_count_test() {
 	assert(attribute_count()==2);
 
 	reset_env();
+}
+
+void attribute_delete_bit_shift_test() {
+	char buf[10];
+	int j;
+	for(j=1;j<=8;j++) {
+		sprintf(buf,"attr-%s",j);
+		assert(attribute_insert(buf)==1);
+	}
+
+	int flags = 255; // 1111 1111
+	assert(workout_insert("test",flags)==1);
+	
+	int index;
+	while(flags!=0) {
+		index = rand()%8;
+		if(flags&(1<<index)>0) {
+			flags >>= 1;
+		}
+
+		sprintf(buf,"attr-%s",index+1);
+		assert(attribute_delete(buf)==1);
+
+		assert(workout_get(buf,NULL,1,&attribute_delete_bit_shift_test_helper)==1);
+		assert(i==flags);
+	}
+
+	reset_env();
+}
+
+void attribute_delete_bit_shift_test_helper(const unsigned char *name, int flags, const unsigned char *date) {
+	i = flags;
 }
 
 int i;
