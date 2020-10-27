@@ -15,20 +15,20 @@ describe('basic tests', () => {
 
 	it('should print usage options when run with --help option', async() => {
 		let usage = `Usage:\n`;
-		usage += `\tworkouts [options] [ls] [--filter {attribute filter}] [search term]\n`;
-		usage += `\tworkouts [options] add [!name] [date]\n`;
-		usage += `\tworkouts [options] new [!name] [attributes]\n`;
-		usage += `\tworkouts [options] attr [ls]\n`;
-		usage += `\tworkouts [options] attr add [!name]\n`;
+		usage += `\tworkouts [options] add [!name] [date] [attributes]\n`;
+		usage += `\tworkouts [options] ls [--filter {attribute filter}] [search term]\n`;
+		usage += `\tworkouts [options] rm [!name] [date]\n`;
 		usage += `\tworkouts [options] toggle [!workout name] [!attr]\n`;
-		usage += `\tworkouts [options] recent\n`;
 		usage += `\n`;
 		usage += `Options:\n`;
+		usage += `\t--attribute, --attr, -a\n`;
 		usage += `\t--help, -h\n`;
 		usage += `\t--homedir, -d <path>\n`;
 		usage += `\t--quiet, -q\n`;
+		usage += `\t--recent, -l\n`;
 		usage += `\t--rows, -r <number>\n`;
 		usage += `\t--verbose, -v\n`;
+		usage += `\t--workout, -w\n`;
 		usage += `\n`;
 		usage += `{attribute filter} refers to a string of bit flags (0 = not, 1 = has, x = either) corresponding to active attributes.\n`;
 		usage += `Ex: 0100x00\n\n`

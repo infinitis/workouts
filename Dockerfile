@@ -18,7 +18,7 @@ WORKDIR /workouts-${VERSION}/
 RUN autoreconf -ivf
 RUN ./configure
 RUN make
-RUN make distcheck
+# RUN make distcheck
 RUN make install
 
 FROM unit-tester
@@ -64,10 +64,10 @@ WORKDIR /data
 COPY --from=builder /home/node/index.html .
 COPY --from=builder /home/node/workouts.js .
 
-RUN workouts attr add lower
-RUN workouts attr add upper
-RUN workouts new "P90X - Kenpo X"
-RUN workouts new "P90X - Kenpo X2"
+RUN workouts --attr add lower
+RUN workouts --attr add upper
+RUN workouts --workout add "P90X - Kenpo X"
+RUN workouts -w add "P90X - Kenpo X2"
 RUN workouts toggle "P90X - Kenpo X" lower
 RUN workouts toggle "P90X - Kenpo X2" upper
 RUN workouts add "P90X - Kenpo X" 2020-07-01

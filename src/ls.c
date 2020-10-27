@@ -1,5 +1,32 @@
 #include<ls.h>
 
+int ls(int argc, char **argv) {
+	switch(global_opts.target) {
+		case WORKOUT_DATA_TYPE_ATTRIBUTE:
+			return ls_attribute();
+		case WORKOUT_DATA_TYPE_RECENT:
+			return ls_recent();
+		case WORKOUT_DATA_TYPE_DEFAULT:
+		case WORKOUT_DATA_TYPE_WORKOUT:
+			return ls_workout(argc,argv);
+	}
+}
+
+int ls_attribute() {
+	if(attribute_get(&print_attribute)<0) { return EXIT_FAILURE; }
+
+	return EXIT_SUCCESS;
+}
+
+int ls_recent() {
+	if(recent_get(global_opts.rows,&print_recent)<0) {
+		log_err(LS_RECENT_COMMAND_FAILED);
+		return EXIT_FAILURE;
+	}
+
+	return EXIT_SUCCESS;
+}
+
 struct ls_helper {
 	int i;
 	int attr_count;
@@ -15,7 +42,7 @@ static struct option ls_long_options[] = {
 	{0,0,0,0}
 };
 
-int ls(int argc, char **argv) {
+int ls_workout(int argc, char **argv) {
 	/*
 	 * Cases:
 	 * -filter by attribute value: workouts --filter 011xx100
@@ -78,6 +105,12 @@ int ls(int argc, char **argv) {
 	return EXIT_SUCCESS;
 }
 
+#define ATTRIBUTE_PRINT_FORMAT "%s\n"
+
+void print_attribute(const unsigned char *name) {
+	printf(ATTRIBUTE_PRINT_FORMAT,name);
+}
+
 #define ATTRIBUTE_PRINT_HEADER "Attributes:\t"
 #define ATTRIBUTE_PRINT_ROW "%s\t"
 #define ATTRIBUTE_PRINT_END "\n"
@@ -91,6 +124,12 @@ void print_header(const unsigned char *name) {
 	if(helper.i==helper.attr_count) {
 		printf(ATTRIBUTE_PRINT_END);
 	}
+}
+
+#define RECENT_PRINT_FORMAT "%s\t%s\n"
+
+void print_recent(const unsigned char *workout, const unsigned char *date) {
+	printf(RECENT_PRINT_FORMAT,workout,date);
 }
 
 #define PRINT_WORKOUT_FORMAT "%s [%d] [Last done: %s]\n"

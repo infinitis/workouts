@@ -20,6 +20,9 @@
 #define ATTRIBUTE_COUNT_SQL "SELECT COUNT(*) FROM " ATTRIBUTE_TABLE_NAME_SQL ";"
 int attribute_count();
 
+#define ATTRIBUTE_DELETE_SQL "DELETE FROM `" ATTRIBUTE_TABLE_NAME_SQL "` WHERE `name` = ?;"
+int attribute_delete(char*);
+
 #define ATTRIBUTE_GET_SQL "SELECT `name` FROM " ATTRIBUTE_TABLE_NAME_SQL " WHERE 1 ORDER BY `order` ASC;"
 int attribute_get(void (*)(const unsigned char*));
 int attribute_index(char*);
@@ -39,6 +42,9 @@ int attribute_parse(char*,int*,int*);
 	"FOREIGN KEY(`name`) REFERENCES `workouts`(`name`)" \
 	");"
 
+#define RECENT_DELETE_SQL "DELETE FROM `" RECENT_TABLE_NAME_SQL "` WHERE `name` = ? AND `date` = ?;"
+int recent_delete(char*,char*);
+
 #define RECENT_GET_SQL "SELECT name, date FROM `" RECENT_TABLE_NAME_SQL "` ORDER BY date(`date`) DESC,`name` ASC LIMIT ?;"
 int recent_get(int,void(*)(const unsigned char*,const unsigned char*));
 
@@ -52,6 +58,9 @@ int recent_insert(char*,char*);
 	"`name` TEXT NOT NULL PRIMARY KEY, " \
 	"`attributes` INT DEFAULT 0" \
 	");"
+
+#define WORKOUT_DELETE_SQL "DELETE FROM `" WORKOUT_TABLE_NAME_SQL "` WHERE `name` = ?;"
+int workout_delete(char*);
 
 #define WORKOUT_GET_BASE_SQL "SELECT " \
 	"`" WORKOUT_TABLE_NAME_SQL "`.name, " \

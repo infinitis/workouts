@@ -5,6 +5,7 @@
 
 int main();
 void attribute_count_test();
+void attribute_delete_test();
 void attribute_get_test();
 void attribute_get_test_helper(const unsigned char*);
 void attribute_index_test();

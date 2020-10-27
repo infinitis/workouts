@@ -6,22 +6,20 @@
 #include<stdlib.h>
 
 #include<add.h>
-#include<attr.h>
 #include<default.h>
 #include<ls.h>
-#include<new.h>
 #include<opt.h>
-#include<recent.h>
+#include<rm.h>
 #include<toggle.h>
 #include<usage.h>
 
+#define MAIN_MESSAGE_UNKNOWN_CMD "Unknown cmd: %s\n"
+
 #define UTIL_ADD "add"
-#define UTIL_ATTR "attr"
 #define UTIL_LS "ls"
-#define UTIL_NEW "new"
 #define UTIL_RECENT "recent"
+#define UTIL_RM "rm"
 #define UTIL_TOGGLE "toggle"
-#define UTIL_VERSION "version"
 
 int main(int,char**);
 

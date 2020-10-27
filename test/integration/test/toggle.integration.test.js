@@ -7,13 +7,13 @@ const unlink = util.promisify(require('fs').unlink);
 describe('toggle integration tests', () => {
 
 	beforeEach(async() => {
-		await assert.doesNotReject(async() => await exec('./workouts attr add lower'));
-		await assert.doesNotReject(async() => await exec('./workouts attr add upper'));
+		await assert.doesNotReject(async() => await exec('./workouts --attr add lower'));
+		await assert.doesNotReject(async() => await exec('./workouts --attr add upper'));
 
-		await assert.doesNotReject(async() => await exec('./workouts new workout1 01'));
-		await assert.doesNotReject(async() => await exec('./workouts new workout2 10'));
-		await assert.doesNotReject(async() => await exec('./workouts new test 00'));
-		await assert.doesNotReject(async() => await exec('./workouts new apple 11'));
+		await assert.doesNotReject(async() => await exec('./workouts --workout add workout1 01'));
+		await assert.doesNotReject(async() => await exec('./workouts --workout add workout2 10'));
+		await assert.doesNotReject(async() => await exec('./workouts --workout add test 00'));
+		await assert.doesNotReject(async() => await exec('./workouts --workout add apple 11'));
 	});
 
 	afterEach(async() => {

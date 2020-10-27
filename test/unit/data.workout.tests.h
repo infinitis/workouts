@@ -4,6 +4,7 @@
 #include<test_utils.h>
 
 int main();
+void workout_delete_test();
 void workout_get_test();
 void workout_get_test_helper();
 void workout_insert_test();

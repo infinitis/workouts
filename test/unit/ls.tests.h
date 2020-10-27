@@ -6,6 +6,8 @@
 #include<ls.h>
 
 int main();
-void ls_basic_test();
+void ls_attribute_basic_test();
+void ls_recent_basic_test();
+void ls_workout_basic_test();
 
 #endif

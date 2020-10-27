@@ -3,6 +3,7 @@
 int main() {
 	setup_env();
 	
+	recent_delete_test();
 	recent_get_test();
 	recent_insert_test();
 
@@ -12,6 +13,24 @@ int main() {
 }
 
 int i;
+
+void recent_delete_test() {
+	assert(workout_insert("test",0)==1);
+	assert(recent_insert("test","2020-10-12")==1);
+
+	i = 0;
+	assert(recent_get(-1,&recent_get_test_helper)==1);
+	assert(i==1);
+
+	assert(recent_delete("test","2020-10-12")==1);
+
+	i = 0;
+	assert(recent_get(-1,&recent_get_test_helper)==1);
+	assert(i==0);
+
+	reset_env();
+}
+
 
 void recent_get_test() {
 	i = 0;

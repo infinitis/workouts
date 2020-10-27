@@ -4,6 +4,7 @@ int main() {
 	setup_env();
 
 	attribute_count_test();
+	attribute_delete_test();
 	attribute_get_test();
 	attribute_index_test();
 	attribute_insert_test();
@@ -27,6 +28,24 @@ void attribute_count_test() {
 }
 
 int i;
+
+void attribute_delete_test() {
+	i = 0;
+	assert(attribute_get(&attribute_get_test_helper)==1);
+	assert(i==0);
+
+	assert(attribute_insert("test")==1);
+	assert(attribute_get(&attribute_get_test_helper)==1);
+	assert(i==1);
+
+	assert(attribute_delete("test")==1);
+
+	i = 0;
+	assert(attribute_get(&attribute_get_test_helper)==1);
+	assert(i==0);
+
+	reset_env();
+}
 
 void attribute_get_test() {
 	i = 0;

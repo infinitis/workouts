@@ -3,6 +3,7 @@
 int main() {
 	setup_env();
 
+	workout_delete_test();
 	workout_get_test();
 	workout_insert_test();
 	workout_toggle_test();
@@ -14,6 +15,26 @@ int main() {
 }
 
 int i;
+
+void workout_delete_test() {
+	i = 0;
+	assert(workout_get(NULL,NULL,-1,&workout_get_test_helper)==1);
+	assert(i==0);
+
+	assert(workout_insert("test",0)==1);
+
+	i = 0;
+	assert(workout_get(NULL,NULL,-1,&workout_get_test_helper)==1);
+	assert(i==1);
+
+	assert(workout_delete("test")==1);
+
+	i = 0;
+	assert(workout_get(NULL,NULL,-1,&workout_get_test_helper)==1);
+	assert(i==0);
+
+	reset_env();
+}
 
 void workout_get_test() {
 	i = 0;

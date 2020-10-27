@@ -3,33 +3,30 @@ AM_CPPFLAGS = -I$(top_builddir)/include/ -I$(top_srcdir)/include/
 bin_PROGRAMS = workouts
 workouts_SOURCES = \
 	src/add.c \
-	src/attr.c \
 	src/data/attr.c \
+	src/data/recent.c \
+	src/data/setup.c \
+	src/data/workout.c \
 	src/default.c \
 	src/log.c \
 	src/ls.c \
 	src/main.c \
-	src/new.c \
-	src/recent.c \
-	src/toggle.c \
-	src/usage.c \
-	src/data/recent.c \
-	src/data/setup.c \
-	src/data/workout.c \
 	src/opt/homedir.c \
 	src/opt/loglvl.c \
-	src/opt/rows.c
+	src/opt/rows.c \
+	src/opt/target.c \
+	src/rm.c \
+	src/toggle.c \
+	src/usage.c
 workouts_SOURCES += \
 	include/add.h \
-	include/attr.h \
 	include/data.h \
 	include/default.h \
 	include/log.h \
 	include/ls.h \
 	include/main.h \
-	include/new.h \
 	include/opt.h \
-	include/recent.h \
+	include/rm.h \
 	include/toggle.h \
 	include/usage.h
 

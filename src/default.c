@@ -29,5 +29,7 @@ int defaults() {
 	
 	opt_set_log_level(LOG_LEVEL_DEFAULT);
 
+	opt_set_target(WORKOUT_DATA_TYPE_DEFAULT);
+
 	return 0;
 }

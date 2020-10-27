@@ -6,6 +6,8 @@
 #include<add.h>
 
 int main();
-void add_basic_test();
+void add_attribute_basic_test();
+void add_recent_basic_test();
+void add_workout_basic_test();
 
 #endif

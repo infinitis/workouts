@@ -3,14 +3,26 @@
 int main() {
 	setup_env();
 
-	ls_basic_test();
+	ls_attribute_basic_test();
+	ls_recent_basic_test();
+	ls_workout_basic_test();
 
 	clean();
 
 	return EXIT_SUCCESS;
 }
 
-void ls_basic_test() {
+void ls_attribute_basic_test() {
+	assert(EXIT_SUCCESS==ls_attribute());
+}
+
+void ls_recent_basic_test() {
+	assert(EXIT_SUCCESS==ls_recent());
+}
+
+void ls_workout_basic_test() {
+	global_opts.target = WORKOUT_DATA_TYPE_WORKOUT;
+
 	char *bad_opt[] = {
 		"ls",
 		"-b",

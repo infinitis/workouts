@@ -1,11 +1,15 @@
 #include<main.h>
 
 static struct option long_options[] = {
+	{"attribute", no_argument, 0, 'a'},
+	{"attr", no_argument, 0, 'a'},
 	{"help", no_argument, 0, 'h'},
 	{"homedir", required_argument, 0, 'd'},
 	{"quiet", no_argument, &verbose_flag, LOG_LEVEL_SILENT},
+	{"recent", no_argument, 0, 'l'},
 	{"rows", required_argument, 0, 'r'},
 	{"verbose", no_argument, &verbose_flag, LOG_LEVEL_VERBOSE},
+	{"workout", no_argument, 0, 'w'},
 	{0,0,0,0}
 };
 
@@ -20,7 +24,7 @@ int main(int argc, char **argv) {
 		/* The '+' at the beginning of the string means getopt_long will
 		 * stop processing after finding the first non-option argument.
 		 */
-		if((c = getopt_long(argc,argv,"+d:hqr:v",long_options,&option_index))==-1) { break; }
+		if((c = getopt_long(argc,argv,"+ad:hlqr:vw",long_options,&option_index))==-1) { break; }
 
 		switch(c) {
 			case 0:
@@ -34,8 +38,14 @@ int main(int argc, char **argv) {
 				return EXIT_FAILURE;
 				
 				break;
+			case 'a':
+				opt_set_target(WORKOUT_DATA_TYPE_ATTRIBUTE);
+				break;
 			case 'd':
 				if(opt_set_homedir(optarg)<0) { return EXIT_FAILURE; }
+				break;
+			case 'l':
+				opt_set_target(WORKOUT_DATA_TYPE_RECENT);
 				break;
 			case 'h':
 				usage();
@@ -49,6 +59,9 @@ int main(int argc, char **argv) {
 				break;
 			case 'v':
 				opt_set_log_level(LOG_LEVEL_VERBOSE);
+				break;
+			case 'w':
+				opt_set_target(WORKOUT_DATA_TYPE_WORKOUT);
 				break;
 			case '?':
 			default:
@@ -65,18 +78,15 @@ int main(int argc, char **argv) {
 		
 		if(strcmp(cmd,UTIL_ADD)==0) {
 			return add(argc,argv);
-		} else if(strcmp(cmd,UTIL_ATTR)==0) {
-			return attr(argc,argv);
 		} else if(strcmp(cmd,UTIL_LS)==0) {
 			return ls(argc,argv);
-		} else if(strcmp(cmd,UTIL_NEW)==0) {
-			return new_workout(argc,argv);
-		} else if(strcmp(cmd,UTIL_RECENT)==0) {
-			return recent();
+		} else if(strcmp(cmd,UTIL_RM)==0) {
+			return rm(argc,argv);
 		} else if(strcmp(cmd,UTIL_TOGGLE)==0) {
 			return toggle(argc,argv);
 		} else {
-			log_err("Unknown cmd: %s\n",cmd);
+			log_err(MAIN_MESSAGE_UNKNOWN_CMD,cmd);
+			usage();
 			return EXIT_FAILURE;
 		}
 	}
