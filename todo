@@ -7,14 +7,14 @@ To Do:
 	- [ ] finish extended features necessary for gui/backend integration
 		- [x] create rm
 		- [x] consolidate add, new, ls, etc. calls
-		- [ ] build succeeds
-		- [ ] update/cleanup tests
-			- [ ] add test cases to data unit tests
-				- [ ] removing workout -> remove all recent
-				- [ ] remove attribute -> shifts all bit fields
+		- [x] build succeeds
+		- [x] update/cleanup tests
+		- [ ] add test cases to data unit tests
+			- [ ] removing workout -> remove all recent
+			- [ ] remove attribute -> shifts all bit fields
 		- [ ] rename workouts functionality
-		- [ ] update date of recent workout from cli
-			- [ ] rm then add
+	- [ ] update date of recent workout from gui -> cli
+		- [ ] rm then add
 	- [ ] migrate data to sqlite db
 		- [ ] consider how to keep up-to-date/backups
 
